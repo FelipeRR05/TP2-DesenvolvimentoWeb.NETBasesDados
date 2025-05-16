@@ -1,0 +1,27 @@
+﻿@page
+@model DR4_TP2.Pages.NoteManager.SaveNoteModel
+@{
+    ViewData["Title"] = "Salvar Anotação";
+}
+
+<h2>Salvar Anotação</h2>
+
+<form method="post">
+    <div>
+        <label asp-for="Input.Content"></label><br />
+        <textarea asp-for="Input.Content" rows="5" cols="50"></textarea>
+        <span asp-validation-for="Input.Content" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Salvar Nota</button>
+</form>
+
+@if (Model.SavedFileName != null)
+{
+    <p>Nota salva com sucesso!</p>
+    <a href="/files/@Model.SavedFileName" download>📄 Baixar @Model.SavedFileName</a>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

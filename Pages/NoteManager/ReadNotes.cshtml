@@ -1,0 +1,30 @@
+﻿@page
+@model DR4_TP2.Pages.NoteManager.ReadNotesModel
+@{
+    ViewData["Title"] = "Ler Notas";
+}
+
+<h2>Notas Salvas</h2>
+
+@if (Model.Files.Count == 0)
+{
+    <p>Não há notas salvas.</p>
+}
+else
+{
+    <ul>
+        @foreach (var file in Model.Files)
+        {
+            <li>
+                <a asp-page="./ReadNotes" asp-route-file="@file">@file</a>
+            </li>
+        }
+    </ul>
+}
+
+@if (Model.FileContent != null)
+{
+    <hr />
+    <h3>Conteúdo de: @Model.SelectedFileName</h3>
+    <pre style="white-space: pre-wrap; background-color: #f0f0f0; padding: 1em;">@Model.FileContent</pre>
+}

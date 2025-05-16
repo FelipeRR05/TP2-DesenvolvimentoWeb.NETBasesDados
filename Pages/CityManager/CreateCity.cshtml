@@ -1,0 +1,26 @@
+﻿@page
+@model DR4_TP2.Pages.CityManager.CreateCityModel
+@{
+    ViewData["Title"] = "Cadastrar Cidade";
+}
+
+<h2>Cadastrar Cidade Turística</h2>
+
+<form method="post">
+    <div>
+        <label asp-for="Input.CityName"></label><br />
+        <input asp-for="Input.CityName" />
+        <span asp-validation-for="Input.CityName" style="color:red"></span>
+    </div>
+    <br />
+    <button type="submit">Enviar</button>
+</form>
+
+@if (Model.IsSubmitted)
+{
+    <p><strong>Cidade cadastrada:</strong> @Model.SubmittedCityName</p>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

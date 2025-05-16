@@ -1,0 +1,16 @@
+﻿@page "{cityName}"
+@model DR4_TP2.Pages.CityManager.CityDetailsModel
+@{
+    ViewData["Title"] = "Detalhes da Cidade";
+}
+
+<h2>Detalhes da Cidade</h2>
+
+@if (!string.IsNullOrWhiteSpace(Model.CityName))
+{
+    <p>Você está vendo detalhes de: <strong>@Model.CityName</strong></p>
+}
+else
+{
+    <p>Nenhuma cidade informada.</p>
+}

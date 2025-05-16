@@ -1,0 +1,51 @@
+﻿@page
+@model DR4_TP2.Pages.CountryManager.CreateCountriesModel
+@{
+    ViewData["Title"] = "Cadastrar Vários Países";
+}
+
+<h2>Cadastrar Vários Países</h2>
+
+<form method="post">
+    <table>
+        <thead>
+            <tr>
+                <th>Nome do País</th>
+                <th>Código ISO (2 letras)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Countries.Count; i++)
+            {
+                <tr>
+                    <td>
+                        <input asp-for="Countries[@i].CountryName" />
+                        <span asp-validation-for="Countries[@i].CountryName" style="color:red"></span>
+                    </td>
+                    <td>
+                        <input asp-for="Countries[@i].CountryCode" />
+                        <span asp-validation-for="Countries[@i].CountryCode" style="color:red"></span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <br />
+    <button type="submit">Cadastrar Países</button>
+</form>
+
+@if (Model.IsSubmitted && Model.SubmittedCountries != null)
+{
+    <h3>Países Cadastrados:</h3>
+    <ul>
+        @foreach (var country in Model.SubmittedCountries)
+        {
+            <li>@country.CountryName (@country.CountryCode)</li>
+        }
+    </ul>
+}
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
